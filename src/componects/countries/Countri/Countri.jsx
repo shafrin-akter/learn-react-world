@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./countri.css";
-const Countri = ({ countrie, count, setCount }) => {
-  console.log(countrie);
+const Countri = ({ countrie, handleVisistedCoutries }) => {
   const { name, flags, capital, continents, languages } = countrie;
   const [visited, setVisited] = useState(false);
 
@@ -15,11 +14,7 @@ const Countri = ({ countrie, count, setCount }) => {
     // setVisited(visited ? false : true);
 
     setVisited(!visited);
-    if (!count) {
-      setCount((prev) => prev + 1);
-    } else {
-      setCount((prev) => prev - 1);
-    }
+    handleVisistedCoutries(countrie);
   };
   return (
     <div className={`countri  ${visited && "countri-visited"}`}>
